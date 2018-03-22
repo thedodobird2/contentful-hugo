@@ -10,15 +10,15 @@ var (
 	properties = config.Get("config.json")
 
 	accessToken = properties.Contentful.Access_token
-	spaceId     = properties.Contentful.Space_id
+	spaceID     = properties.Contentful.Space_id
 )
 
 func main() {
 	fmt.Println("Contentful, meet Hugo")
 
 	space := &contentful.Space{
-		spaceId,
-		accessToken,
+		Id:    spaceID,
+		Token: accessToken,
 	}
 
 	fmt.Println(string(space.GetEntries()))
