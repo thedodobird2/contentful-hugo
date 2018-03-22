@@ -2,17 +2,15 @@ package main
 
 import (
 	"fmt"
+	"github.com/thedodobird2/contentful-hugo/config"
 	"github.com/thedodobird2/contentful-hugo/contentful"
 )
 
-const (
-	// Content Delivery API
-	cdaUrl   = ""
-	cdaToken = ""
-	// Content Preview API
-	cpaBaseUrl = ""
-	cpaToken   = ""
-	spaceId = ""
+var (
+	properties = config.Get("config.json")
+
+	accessToken = properties.Contentful.Access_token
+	spaceId     = properties.Contentful.Space_id
 )
 
 func main() {
@@ -20,7 +18,7 @@ func main() {
 
 	space := &contentful.Space{
 		spaceId,
-		cdaToken,
+		accessToken,
 	}
 
 	fmt.Println(string(space.GetEntries()))
