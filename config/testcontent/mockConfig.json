@@ -1,0 +1,6 @@
+{
+  "contentful": {
+    "space_id": "mockSpaceId",
+    "access_token": "mockToken"
+  }
+}
