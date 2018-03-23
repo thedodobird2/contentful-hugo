@@ -1,4 +1,9 @@
 language: go
 
 go:
-  - "1.10"
+  - "1.10.x"
+  - master
+
+os:
+  - linux
+  - os
