@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"github.com/thedodobird2/contentful-hugo/config"
 	"github.com/thedodobird2/contentful-hugo/contentful"
+	"github.com/thedodobird2/contentful-hugo/hugo"
 )
 
 const (
@@ -14,11 +14,11 @@ func main() {
 	// set configuration properties
 	config.GetConfig(configFile)
 
-	// setup Contentful Space
+	// set up Contentful Space
 	space := &contentful.Space{
 		ID:    config.Contentful.SpaceID,
 		Token: config.Contentful.AccessToken,
 	}
 
-	fmt.Println(string(space.GetContentTypeEntries("testContentType")))
+	hugo.GenerateMarkdown(space, "testContentType")
 }
