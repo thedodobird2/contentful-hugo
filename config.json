@@ -1,6 +1,9 @@
 {
   "contentful": {
-    "space_id": "",
-    "access_token": ""
+    "spaceId": "",
+    "accessToken": ""
+  },
+  "hugo": {
+    "root": ""
   }
 }

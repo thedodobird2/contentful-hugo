@@ -1,6 +1,9 @@
 {
   "contentful": {
-    "space_id": "mockSpaceId",
-    "access_token": "mockToken"
+    "spaceId": "mockSpaceId",
+    "accessToken": "mockToken"
+  },
+  "hugo": {
+    "root": "mockPath"
   }
 }

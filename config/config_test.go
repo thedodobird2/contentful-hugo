@@ -4,12 +4,25 @@ import (
 	"testing"
 )
 
-func TestGet(t *testing.T) {
-	mockConfig := Config{}
-	mockConfig.Contentful.Access_token = "mockToken"
-	mockConfig.Contentful.Space_id = "mockSpaceId"
+const (
+	mockConfigFile = "testcontent/mockConfig.json"
+)
 
-	if Get("testcontent/mockConfig.json") != mockConfig {
-		t.Error("File data didn't match mock:", mockConfig)
+func TestGetConfig(t *testing.T) {
+	GetConfig(mockConfigFile)
+
+	var tests = []struct {
+		mock     string
+		expected string
+	}{
+		{"mockToken", Contentful.AccessToken},
+		{"mockSpaceId", Contentful.SpaceID},
+		{"mockPath", Hugo.Root},
+	}
+
+	for _, test := range tests {
+		if test.mock != test.expected {
+			t.Errorf("Test Failed: {%s} expected, recieved: {%s}", test.mock, test.expected)
+		}
 	}
 }

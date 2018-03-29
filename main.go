@@ -6,19 +6,18 @@ import (
 	"github.com/thedodobird2/contentful-hugo/contentful"
 )
 
-var (
-	properties = config.Get("config.json")
-
-	accessToken = properties.Contentful.Access_token
-	spaceID     = properties.Contentful.Space_id
+const (
+	configFile = "config.json"
 )
 
 func main() {
 	fmt.Println("Contentful, meet Hugo")
 
+	config.GetConfig(configFile)
+
 	space := &contentful.Space{
-		Id:    spaceID,
-		Token: accessToken,
+		Id:    config.Contentful.SpaceID,
+		Token: config.Contentful.AccessToken,
 	}
 
 	fmt.Println(string(space.GetEntries()))
