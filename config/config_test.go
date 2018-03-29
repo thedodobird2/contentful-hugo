@@ -22,7 +22,7 @@ func TestGetConfig(t *testing.T) {
 
 	for _, test := range tests {
 		if test.mock != test.expected {
-			t.Errorf("Test Failed: {%s} expected, recieved: {%s}", test.mock, test.expected)
+			t.Errorf("Test Failed: {%s} expected, received: {%s}", test.mock, test.expected)
 		}
 	}
 }
