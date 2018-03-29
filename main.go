@@ -11,14 +11,14 @@ const (
 )
 
 func main() {
-	fmt.Println("Contentful, meet Hugo")
-
+	// set configuration properties
 	config.GetConfig(configFile)
 
+	// setup Contentful Space
 	space := &contentful.Space{
-		Id:    config.Contentful.SpaceID,
+		ID:    config.Contentful.SpaceID,
 		Token: config.Contentful.AccessToken,
 	}
 
-	fmt.Println(string(space.GetEntries()))
+	fmt.Println(string(space.GetContentTypeEntries("testContentType")))
 }

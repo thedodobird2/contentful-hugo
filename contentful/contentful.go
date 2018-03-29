@@ -1,36 +1,50 @@
 package contentful
 
-import (
-	"io/ioutil"
-	"log"
-	"net/http"
+const (
+	spaceURL = "https://cdn.contentful.com/spaces/"
 )
 
-func contentfulRequest(url string, token string) []byte {
-	// initialize reusable client
-	client := &http.Client{}
+// Space holds the needed properties for all requests to a Contentful Space
+type Space struct {
+	ID, Token string
+}
 
-	// initialize request
-	request, err := http.NewRequest(http.MethodGet, url, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	// add token as HTTP header
-	request.Header.Add("Authorization", "Bearer "+token)
+// Entries defines the structure for the response from Contentful when querying for Entries
+type Entries struct {
+	Sys struct {
+		Type string `json:"type"`
+	} `json:"sys"`
+	Total int     `json:"total"`
+	Skip  int     `json:"skip"`
+	Limit int     `json:"limit"`
+	Items []Entry `json:"items"`
+}
 
-	// get the response for the just-configured request
-	response, err := client.Do(request)
-	if err != nil {
-		log.Fatal(err)
-	}
+// Entry defines the structure of a single Contentful Entry
+type Entry struct {
+	Sys struct {
+		ID          string `json:"id"`
+		Type        string `json:"type"`
+		Version     int    `json:"version"`
+		Space       link   `json:"space"`
+		ContentType link   `json:"contentType"`
+		CreatedAt   string `json:"createdAt"`
+		UpdatedAt   string `json:"updatedAt"`
+		Revision    int    `json:"revision"`
+	} `json:"sys"`
+	Fields map[string]interface{} `json:"fields"`
+}
 
-	// close body once function returns
-	defer response.Body.Close()
-	// get the body from the response (json)
-	body, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
+type link struct {
+	Sys struct {
+		Type     string `json:"type"`
+		LinkType string `json:"linkType"`
+		ID       string `json:"id"`
+	} `json:"sys"`
+}
 
-	return body
+// GetContentTypeEntries triggers a request to the Contentful Delivery API
+// which returns all Entries of the given Contentful Content Type
+func (s *Space) GetContentTypeEntries(contentType string) []byte {
+	return request(spaceURL+s.ID+"/entries?content_type="+contentType, s.Token)
 }
