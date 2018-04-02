@@ -1,16 +1,24 @@
 package main
 
 import (
+	"flag"
 	"github.com/thedodobird2/contentful-hugo/config"
 	"github.com/thedodobird2/contentful-hugo/contentful"
 	"github.com/thedodobird2/contentful-hugo/hugo"
+	"log"
 )
 
 const (
 	configFile = "config.json"
 )
 
+var (
+	contentType string
+)
+
 func main() {
+	flag.Parse()
+
 	// set configuration properties
 	config.GetConfig(configFile)
 
@@ -20,5 +28,18 @@ func main() {
 		Token: config.Contentful.AccessToken,
 	}
 
-	hugo.GenerateMarkdown(space, "testContentType")
+	if contentType == "" {
+		log.Fatal("CLI requestError: Specify the Content Type from Contentful you wish to add to Hugo with the -c flag.")
+	}
+
+	hugo.GenerateMarkdown(space, contentType)
+}
+
+func init() {
+	const (
+		defaultValue = ""
+		usage        = "the Content Type from Contentful you wish to add to your Hugo website"
+	)
+	flag.StringVar(&contentType, "contentType", defaultValue, usage)
+	flag.StringVar(&contentType, "c", defaultValue, usage+" (shorthand)")
 }
