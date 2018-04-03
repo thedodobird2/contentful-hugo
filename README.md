@@ -24,8 +24,11 @@ In order to be able to use the contentful-hugo connector you need three things:
 Both of these should be placed alongside your Hugo website, at the same level as your Hugo root directory for the Connector to work.
 
 .
+
 ├── hugo-site
+
 ├── config.json
+
 └── contentful-hugo
 
 ### Executable
