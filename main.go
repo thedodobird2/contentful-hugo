@@ -16,6 +16,15 @@ var (
 	contentType string
 )
 
+func init() {
+	const (
+		defaultValue = ""
+		usage        = "the Content Type from Contentful you wish to add to your Hugo website"
+	)
+	flag.StringVar(&contentType, "contentType", defaultValue, usage)
+	flag.StringVar(&contentType, "c", defaultValue, usage+" (shorthand)")
+}
+
 func main() {
 	flag.Parse()
 
@@ -33,13 +42,4 @@ func main() {
 	}
 
 	hugo.GenerateMarkdown(space, contentType)
-}
-
-func init() {
-	const (
-		defaultValue = ""
-		usage        = "the Content Type from Contentful you wish to add to your Hugo website"
-	)
-	flag.StringVar(&contentType, "contentType", defaultValue, usage)
-	flag.StringVar(&contentType, "c", defaultValue, usage+" (shorthand)")
 }

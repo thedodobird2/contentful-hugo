@@ -72,12 +72,12 @@ func GetEntries(space *Space, contentType string) ([]Entry, error) {
 		log.Fatal(err)
 	}
 
-	if response.Sys.Type == "requestError" {
+	if response.Sys.Type == "Error" {
 		if err = json.Unmarshal(entries, &requestError); err != nil {
 			log.Fatal(err)
 		}
 		err = fmt.Errorf("The Content Type you are looking for probably doesn't exist in your Contentful"+
-			"Space.\nContentful requestError: %s: %s", requestError.Sys.ID, requestError.Message)
+			"Space.\n\tContentful requestError: %s:\n\t%s", requestError.Sys.ID, requestError.Message)
 	}
 
 	return response.Items, err
