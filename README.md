@@ -69,7 +69,7 @@ The Connector is a command line tool. It has one flag (`-c` or `-contentType`) w
 Content Type in Contentful you want all the Entries from to be added to your Hugo site.
 
 ```$bash
-contentful-connector -c contentType
+contentful-hugo -c contentType
 ```
 
 This command will get all the Entries from Contentful with the Content Type ID _contentType_ and put them as separate
@@ -79,7 +79,7 @@ markdown files in the section with the name of their Content Type. All markdown 
 
 If you want to contribute in development, simply:
 ```$bash
-go get github.com/thedodobird2/contentful-connector
+go get github.com/thedodobird2/contentful-hugo
 ```
 
 Otherwise if you have problems or suggestions for improvement, just open an issue or a pull request.
