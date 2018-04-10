@@ -1,9 +1,9 @@
 {
   "contentful": {
-    "spaceId": "",
-    "accessToken": ""
+    "spaceId": "YOUR_CONTENTFUL_SPACE_ID",
+    "accessToken": "YOUR_CONTENTFUL_ACCESS_TOKEN"
   },
   "hugo": {
-    "root": ""
+    "root": "hugo"
   }
 }
