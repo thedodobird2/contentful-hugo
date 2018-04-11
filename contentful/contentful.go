@@ -61,12 +61,12 @@ type requestError struct {
 // which returns all entries of the given Contentful Content Type.
 //
 // If Contentful returns an error based on a faulty Query, the message is returned.
-func GetEntries(space *Space, contentType string) ([]Entry, error) {
+func GetEntries(space *Space, contentTypeID string) ([]Entry, error) {
 	var response entries
 	var requestError requestError
 	var err error
 
-	entries := request(spaceURL+space.ID+"/entries?content_type="+contentType, space.Token)
+	entries := request(spaceURL + space.ID + "/entries?content_type=" + contentTypeID)
 
 	if err = json.Unmarshal(entries, &response); err != nil {
 		log.Fatal(err)
