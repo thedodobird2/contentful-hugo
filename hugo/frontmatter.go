@@ -7,8 +7,5 @@ import "github.com/thedodobird2/contentful-hugo/contentful"
 type frontMatter struct {
 	Contentful  contentful.Entry `json:"contentful"`
 	Type        string           `json:"type"`
-	Url         string           `json:"url"`
 	Draft       bool             `json:"draft"`
-	PublishDate string           `json:"publishdate"`
-	ExpiryDate  string           `json:"expirydate"`
 }
