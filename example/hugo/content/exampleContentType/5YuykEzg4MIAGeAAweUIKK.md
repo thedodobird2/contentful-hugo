@@ -1,9 +1,6 @@
 {
   "contentful": {
     "sys": {
-      "id": "5YuykEzg4MIAGeAAweUIKK",
-      "type": "Entry",
-      "version": 0,
       "space": {
         "sys": {
           "type": "Link",
@@ -11,6 +8,11 @@
           "id": "YOUR_CONTENTFUL_SPACE_ID"
         }
       },
+      "id": "5YuykEzg4MIAGeAAweUIKK",
+      "type": "Entry",
+      "createdAt": "2018-04-10T15:17:18.762Z",
+      "updatedAt": "2018-04-10T15:17:18.762Z",
+      "revision": 1,
       "contentType": {
         "sys": {
           "type": "Link",
@@ -18,9 +20,7 @@
           "id": "exampleContentType"
         }
       },
-      "createdAt": "2018-04-10T15:17:18.762Z",
-      "updatedAt": "2018-04-10T15:17:18.762Z",
-      "revision": 1
+      "locale": "en-US"
     },
     "fields": {
       "description": "Don't feel very creative today.\n\nBla bla bla...",
@@ -28,9 +28,5 @@
     }
   },
   "type": "exampleContentType",
-  "url": "",
-  "draft": false,
-  "publishdate": "",
-  "expirydate": ""
+  "draft": false
 }
-

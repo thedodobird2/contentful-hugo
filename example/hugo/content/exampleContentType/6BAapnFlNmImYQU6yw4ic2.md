@@ -1,9 +1,6 @@
 {
   "contentful": {
     "sys": {
-      "id": "6BAapnFlNmImYQU6yw4ic2",
-      "type": "Entry",
-      "version": 0,
       "space": {
         "sys": {
           "type": "Link",
@@ -11,6 +8,11 @@
           "id": "YOUR_CONTENTFUL_SPACE_ID"
         }
       },
+      "id": "6BAapnFlNmImYQU6yw4ic2",
+      "type": "Entry",
+      "createdAt": "2018-04-10T15:15:51.157Z",
+      "updatedAt": "2018-04-10T15:15:51.157Z",
+      "revision": 1,
       "contentType": {
         "sys": {
           "type": "Link",
@@ -18,9 +20,7 @@
           "id": "exampleContentType"
         }
       },
-      "createdAt": "2018-04-10T15:15:51.157Z",
-      "updatedAt": "2018-04-10T15:15:51.157Z",
-      "revision": 1
+      "locale": "en-US"
     },
     "fields": {
       "description": "Some sort of a description for the example.",
@@ -28,10 +28,7 @@
     }
   },
   "type": "exampleContentType",
-  "url": "",
-  "draft": false,
-  "publishdate": "",
-  "expirydate": ""
+  "draft": false
 }
 
 Optional Hugo content
