@@ -4,9 +4,10 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"github.com/thedodobird2/contentful-hugo/config"
 )
 
-func request(url string, token string) []byte {
+func request(url string) []byte {
 	client := &http.Client{}
 
 	request, err := http.NewRequest(http.MethodGet, url, nil)
@@ -14,7 +15,7 @@ func request(url string, token string) []byte {
 		log.Fatal(err)
 	}
 
-	request.Header.Add("Authorization", "Bearer "+token)
+	request.Header.Add("Authorization", "Bearer "+config.Contentful.AccessToken)
 
 	response, err := client.Do(request)
 	if err != nil {
