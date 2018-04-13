@@ -37,6 +37,7 @@ func main() {
 		Token: config.Contentful.AccessToken,
 	}
 
+	contentType = "exampleContentType"
 	if contentType == "" {
 		log.Fatal("CLI requestError: Specify the Content Type from Contentful you wish to add to Hugo with the -c flag.")
 	}
